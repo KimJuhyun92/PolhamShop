@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.example.polhamshop.HttpConnection.LoginCheck;
+import com.example.polhamshop.HttpConnection.TestConn;
 
 import java.util.concurrent.ExecutionException;
 
@@ -41,8 +42,18 @@ public class LoginActivity extends AppCompatActivity {
 //                input_id = id_edit.getText().toString();
 //                input_password = password_edit.getText().toString();
 
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
+                TestConn testConn = new TestConn();
+                try {
+                    String result = testConn.execute().get();
+                    Log.d("@@result",result);
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+//                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                startActivity(intent);
 
 //                if(!TextUtils.isEmpty(input_id) && !TextUtils.isEmpty(input_password)) {
 //                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);

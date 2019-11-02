@@ -54,39 +54,39 @@ public class NoticeFragment extends Fragment {
                 inputNoticeDialog.show();
             }
         });
-//        final NoticeAdapter adapter = new NoticeAdapter(getActivity());
-//        final ListView listview = (ListView) view.findViewById(R.id.noticelist);
-//        listview.setAdapter(adapter);
-//        View header = inflater.inflate(R.layout.listview_header, null, false);
-//        listview.addHeaderView(header);
-//
-//        //DB에서 공지사항 목록 불러오기
-//        GetNoticeInfo getNoticeInfo = new GetNoticeInfo();
-//        try {
-//            String result = getNoticeInfo.execute().get();
+        final NoticeAdapter adapter = new NoticeAdapter(getActivity());
+        final ListView listview = (ListView) view.findViewById(R.id.noticelist);
+        listview.setAdapter(adapter);
+        View header = inflater.inflate(R.layout.listview_header, null, false);
+        listview.addHeaderView(header);
+
+        //DB에서 공지사항 목록 불러오기
+        GetNoticeInfo getNoticeInfo = new GetNoticeInfo();
+        try {
+            String result = getNoticeInfo.execute().get();
 //            Log.d("connect",result);
-//            Gson gson = new GsonBuilder().disableHtmlEscaping().create();
-//            InfoNotice[] infoNotices = gson.fromJson(result, InfoNotice[].class);
-//
-//            for (InfoNotice infoNotice : infoNotices) {
-//                try {
-//                    String title = infoNotice.getNotice_title();
-//                    title = URLDecoder.decode(title, "UTF-8");
-//                    infoNotice.setNotice_title(title);
-//                    String content = infoNotice.getNotice_content();
-//                    content = URLDecoder.decode(content, "UTF-8");
-//                    infoNotice.setNotice_content(content);
-//                } catch (UnsupportedEncodingException e) {
-//                    e.printStackTrace();
-//                }
-//                adapter.add(infoNotice);
-//            }
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        } catch (ExecutionException e) {
-//            e.printStackTrace();
-//        }
-//        adapter.notifyDataSetChanged();
+            Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+            InfoNotice[] infoNotices = gson.fromJson(result, InfoNotice[].class);
+
+            for (InfoNotice infoNotice : infoNotices) {
+                try {
+                    String title = infoNotice.getNotice_title();
+                    title = URLDecoder.decode(title, "UTF-8");
+                    infoNotice.setNotice_title(title);
+                    String content = infoNotice.getNotice_content();
+                    content = URLDecoder.decode(content, "UTF-8");
+                    infoNotice.setNotice_content(content);
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                adapter.add(infoNotice);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        adapter.notifyDataSetChanged();
         return view;
     }
 

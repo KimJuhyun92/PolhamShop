@@ -12,11 +12,11 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class GetNoticeInfo extends AsyncTask<Void, Void, String> {
+public class TestConn extends AsyncTask<Void, Void, String> {
 
     String answer;
 
-    public GetNoticeInfo() {
+    public TestConn() {
 
     }
 
@@ -26,9 +26,9 @@ public class GetNoticeInfo extends AsyncTask<Void, Void, String> {
         OkHttpClient client = new OkHttpClient();
         Response response;
         RequestBody requestBody = null;
-        requestBody = new FormBody.Builder().build();
+        requestBody = new FormBody.Builder().add("msg","hi").build();
         Request request = new Request.Builder()
-                .url("http://172.30.124.59:8080/PolhamShop/getNoticeList")
+                .url("http://172.30.124.59:8080/PolhamShop/test")
                 .post(requestBody)
                 .build();
         try {
