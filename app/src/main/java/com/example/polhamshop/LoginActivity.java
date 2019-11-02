@@ -38,35 +38,38 @@ public class LoginActivity extends AppCompatActivity {
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                input_id = id_edit.getText().toString();
-                input_password = password_edit.getText().toString();
+//                input_id = id_edit.getText().toString();
+//                input_password = password_edit.getText().toString();
 
-                if(!TextUtils.isEmpty(input_id) && !TextUtils.isEmpty(input_password)) {
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    Log.d("check", input_id+", " + input_password + "!!!");
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
 
-                    //로그인 통신
-                    LoginCheck checkLogin = new LoginCheck(input_id, input_password);
-                    try {
-                        state = checkLogin.execute().get();
-
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    }
-
-                    if(state.equals("0")){
-                        Toast.makeText(LoginActivity.this, "아이디 혹은 비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show();
-                    }
-                    else if(state.equals("1")) {
-                        startActivity(intent);
-                        finish();
-                    }
-                }
-                else{
-                    Toast.makeText(LoginActivity.this, "아이디 혹은 비밀번호를 입력하지 않았습니다.", Toast.LENGTH_SHORT).show();
-                }
+//                if(!TextUtils.isEmpty(input_id) && !TextUtils.isEmpty(input_password)) {
+//                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                    Log.d("check", input_id+", " + input_password + "!!!");
+//
+//                    //로그인 통신
+//                    LoginCheck checkLogin = new LoginCheck(input_id, input_password);
+//                    try {
+//                        state = checkLogin.execute().get();
+//
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    } catch (ExecutionException e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                    if(state.equals("0")){
+//                        Toast.makeText(LoginActivity.this, "아이디 혹은 비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show();
+//                    }
+//                    else if(state.equals("1")) {
+//                        startActivity(intent);
+//                        finish();
+//                    }
+//                }
+//                else{
+//                    Toast.makeText(LoginActivity.this, "아이디 혹은 비밀번호를 입력하지 않았습니다.", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
 
